@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#16a34a">
+<title>FreshCart - Grocery Delivery</title>
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+  font-family:Arial,sans-serif;
+}
+
+body{
+  background:#f5f7f5;
+  color:#172117;
+  padding-bottom:80px;
+}
+
+.header{
+  background:#16a34a;
+  color:white;
+  padding:18px 18px 22px;
+  border-radius:0 0 24px 24px;
+}
+
+.logo{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo h1{
+  font-size:25px;
+}
+
+.cart{
+  background:white;
+  color:#16a34a;
+  border-radius:14px;
+  padding:10px 14px;
+  font-size:22px;
+}
+
+.location{
+  margin-top:18px;
+  font-size:14px;
+  opacity:.9;
+}
+
+.search{
+  margin-top:14px;
+  background:white;
+  border-radius:14px;
+  padding:13px 15px;
+  color:#777;
+}
+
+.banner{
+  margin:20px 16px;
+  background:#dcfce7;
+  border-radius:20px;
+  padding:22px;
+}
+
+.banner h2{
+  color:#166534;
+  font-size:23px;
+}
+
+.banner p{
+  margin-top:8px;
+  color:#47704e;
+}
+
+.section{
+  padding:0 16px;
+}
+
+.section-title{
+  display:flex;
+  justify-content:space-between;
+  margin:22px 0 14px;
+}
+
+.section-title h2{
+  font-size:20px;
+}
+
+.categories{
+  display:flex;
+  gap:12px;
+  overflow-x:auto;
+}
+
+.category{
+  min-width:80px;
+  background:white;
+  padding:14px 8px;
+  border-radius:16px;
+  text-align:center;
+  box-shadow:0 2px 8px #0000000d;
+}
+
+.category .emoji{
+  font-size:30px;
+}
+
+.category p{
+  margin-top:7px;
+  font-size:12px;
+}
+
+.products{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:14px;
+}
+
+.product{
+  background:white;
+  border-radius:18px;
+  padding:14px;
+  box-shadow:0 2px 10px #0000000d;
+}
+
+.product-img{
+  height:120px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#f0fdf4;
+  border-radius:14px;
+  font-size:65px;
+}
+
+.product h3{
+  margin-top:12px;
+  font-size:16px;
+}
+
+.product p{
+  color:#777;
+  margin:5px 0;
+  font-size:13px;
+}
+
+.price{
+  font-weight:bold;
+  font-size:17px;
+}
+
+.add{
+  width:100%;
+  margin-top:10px;
+  border:0;
+  background:#16a34a;
+  color:white;
+  padding:10px;
+  border-radius:10px;
+  font-weight:bold;
+}
+
+.bottom{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:68px;
+  background:white;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  box-shadow:0 -2px 12px #0002;
+}
+
+.bottom div{
+  text-align:center;
+  color:#777;
+  font-size:12px;
+}
+
+.bottom .active{
+  color:#16a34a;
+  font-weight:bold;
+}
+
+#count{
+  background:#ef4444;
+  color:white;
+  border-radius:50%;
+  font-size:11px;
+  padding:3px 6px;
+  position:absolute;
+  margin-left:-8px;
+  margin-top:-5px;
+}
+</style>
+</head>
+
+<body>
+
+<header class="header">
+  <div class="logo">
+    <h1>🛒 FreshCart</h1>
+    <div class="cart">🛍️ <span id="count">0</span></div>
+  </div>
+
+  <div class="location">📍 Delivering to Sector 17, Navi Mumbai</div>
+
+  <div class="search">🔍 Search groceries, fruits, vegetables...</div>
+</header>
+
+<section class="banner">
+  <h2>Fresh groceries delivered fast 🥦</h2>
+  <p>Fresh products • Great prices • Quick delivery</p>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <h2>Categories</h2>
+  </div>
+
+  <div class="categories">
+    <div class="category">
+      <div class="emoji">🍎</div>
+      <p>Fruits</p>
+    </div>
+
+    <div class="category">
+      <div class="emoji">🥦</div>
+      <p>Vegetables</p>
+    </div>
+
+    <div class="category">
+      <div class="emoji">🥛</div>
+      <p>Dairy</p>
+    </div>
+
+    <div class="category">
+      <div class="emoji">🍞</div>
+      <p>Bakery</p>
+    </div>
+
+    <div class="category">
+      <div class="emoji">🥤</div>
+      <p>Drinks</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-title">
+    <h2>Popular Products</h2>
+    <span>See all →</span>
+  </div>
+
+  <div class="products">
+
+    <div class="product">
+      <div class="product-img">🍎</div>
+      <h3>Fresh Apples</h3>
+      <p>1 kg</p>
+      <div class="price">₹120</div>
+      <button class="add" onclick="addCart()">+ Add</button>
+    </div>
+
+    <div class="product">
+      <div class="product-img">🍌</div>
+      <h3>Bananas</h3>
+      <p>1 dozen</p>
+      <div class="price">₹60</div>
+      <button class="add" onclick="addCart()">+ Add</button>
+    </div>
+
+    <div class="product">
+      <div class="product-img">🍅</div>
+      <h3>Tomatoes</h3>
+      <p>1 kg</p>
+      <div class="price">₹45</div>
+      <button class="add" onclick="addCart()">+ Add</button>
+    </div>
+
+    <div class="product">
+      <div class="product-img">🥔</div>
+      <h3>Potatoes</h3>
+      <p>1 kg</p>
+      <div class="price">₹35</div>
+      <button class="add" onclick="addCart()">+ Add</button>
+    </div>
+
+    <div class="product">
+      <div class="product-img">🥕</div>
+      <h3>Carrots</h3>
+      <p>500 g</p>
+      <div class="price">₹40</div>
+      <button class="add" onclick="addCart()">+ Add</button>
+    </div>
+
+    <div class="product">
+      <div class="product-img">🥛</div>
+      <h3>Fresh Milk</h3>
+      <p>1 litre</p>
+      <div class="price">₹65</div>
+      <button class="add" onclick="addCart()">+ Add</button>
+    </div>
+
+  </div>
+</section>
+
+<nav class="bottom">
+  <div class="active">🏠<br>Home</div>
+  <div>📂<br>Categories</div>
+  <div>🛒<br>Cart</div>
+  <div>📦<br>Orders</div>
+  <div>👤<br>Profile</div>
+</nav>
+
+<script>
+let cartCount = 0;
+
+function addCart(){
+  cartCount++;
+  document.getElementById("count").innerText = cartCount;
+}
+</script>
+
+</body>
+</html>
