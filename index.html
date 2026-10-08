@@ -328,5 +328,32 @@ function addCart(){
 }
 </script>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const SUPABASE_URL = "https://zfqkfybvppzpbjtxcnep.supabase.co";
+const SUPABASE_KEY = sb_publishable_SG8AyuSkt_O0Y8UAuW6GYw_rmIoLEQi
+
+const supabaseClient = window.supabase.createClient(
+  SUPABASE_URL,
+  SUPABASE_KEY
+);
+
+async function loadProductsFromSupabase() {
+  const { data, error } = await supabaseClient
+    .from("products")
+    .select("*")
+    .order("id", { ascending: true });
+
+  if (error) {
+    console.error("Products load error:", error.message);
+    return;
+  }
+
+  console.log("Supabase products loaded:", data.length, data);
+}
+
+loadProductsFromSupabase();
+</script>
+
 </body>
 </html>
