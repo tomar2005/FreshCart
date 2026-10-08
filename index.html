@@ -322,9 +322,14 @@ body{
 <script>
 let cartCount = 0;
 
-function addCart(){
+window.addCart = function () {
   cartCount++;
-  document.getElementById("count").innerText = cartCount;
+
+  const counter = document.getElementById("count");
+
+  if (counter) {
+    counter.textContent = cartCount;
+  }
 }
 </script>
 
